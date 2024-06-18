@@ -9,8 +9,26 @@ var points = {
 };
 
 export function getWordScore(word) {
-  // TODO:
   // - use the point definitions above to write a method that computes and returns the word score
   // - eg. 'juicy' = 17
-  return "?";
+
+  let score = 0;
+
+  for (let i = 0; i < word.length; i++) {
+    for (let key in points) {
+      if (points[key].includes(word[i].toUpperCase())) {
+        score += parseInt(key);
+      }
+    }
+  }
+
+  return score;
+}
+
+export function getLetterScore(letter) {
+  for (let key in points) {
+    if (points[key].includes(letter.toUpperCase())) {
+      return parseInt(key);
+    }
+  }
 }
